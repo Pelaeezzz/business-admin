@@ -16,6 +16,8 @@ export const routes = {
   workers: "/dashboard/trabajadores",
   settings: "/dashboard/configuracion",
   users: {
+    list: "/dashboard/users",
     new: "/dashboard/users/new",
+    edit: (id: string) => `/dashboard/users/${id}/edit`,
   },
 } as const;
