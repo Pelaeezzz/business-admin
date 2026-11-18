@@ -162,12 +162,12 @@ function SidebarNav() {
           <SidebarMenu>
             <SidebarMenuItem>
               <SidebarMenuButton
-                render={<Link href={routes.users.new} />}
-                tooltip={collapsed ? "Nuevo usuario" : undefined}
-                isActive={pathname === routes.users.new}
+                render={<Link href={routes.products.new} />}
+                tooltip={collapsed ? "Nuevo producto" : undefined}
+                isActive={pathname === routes.products.new}
               >
                 <Plus className="h-4 w-4" aria-hidden="true" />
-                <span>Nuevo usuario</span>
+                <span>Nuevo producto</span>
               </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

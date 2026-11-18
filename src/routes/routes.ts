@@ -4,7 +4,11 @@ export const routes = {
   inventory: "/dashboard/inventario",
   inventoryAlerts: "/dashboard/inventario/alertas",
   inventorySuggestions: "/dashboard/inventario/sugerencias",
-  products: "/dashboard/productos",
+  products: {
+    list: "/dashboard/productos",
+    new: "/dashboard/productos/nuevo",
+    edit: (id: string) => `/dashboard/productos/${id}/editar`,
+  },
   ipv: "/dashboard/ipv",
   ipvEntrada: "/dashboard/ipv/entrada",
   ipvSalida: "/dashboard/ipv/salida",

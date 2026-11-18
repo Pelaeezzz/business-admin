@@ -48,7 +48,7 @@ export const navigationConfig: NavigationConfig = [
     label: "Productos",
     items: [
       {
-        href: routes.products,
+        href: routes.products.list,
         label: "Productos",
         icon: Boxes,
       },
