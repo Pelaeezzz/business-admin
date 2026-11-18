@@ -1,19 +1,26 @@
 import {
-  LayoutDashboard,
-  Users,
   Settings,
-  Building2,
+  Boxes,
+  ClipboardList,
+  UserGroup,
+  Package,
+  ClipboardPenLine,
+  LayoutList,
+  Scale,
+  Summary,
+  TrendingUp,
 } from "lucide-react";
 import type { NavigationConfig } from "@/types/navigation";
+import { routes } from "@/routes/routes";
 
 export const navigationConfig: NavigationConfig = [
   {
     label: "Principal",
     items: [
       {
-        href: "/dashboard",
+        href: routes.dashboard,
         label: "Resumen",
-        icon: LayoutDashboard,
+        icon: Summary,
       },
     ],
   },
@@ -21,9 +28,9 @@ export const navigationConfig: NavigationConfig = [
     label: "Inventario",
     items: [
       {
-        href: "/inventory",
-        label: "Unventario Inteligente",
-        icon: Building2,
+        href: routes.inventory,
+        label: "Inventario Inteligente",
+        icon: Package,
       },
     ],
   },
@@ -31,9 +38,56 @@ export const navigationConfig: NavigationConfig = [
     label: "IPV",
     items: [
       {
-        href: "/ipv",
+        href: routes.ipv,
         label: "IPV",
-        icon: Users,
+        icon: ClipboardPenLine,
+      },
+    ],
+  },
+  {
+    label: "Productos",
+    items: [
+      {
+        href: routes.products,
+        label: "Productos",
+        icon: Boxes,
+      },
+    ],
+  },
+  {
+    label: "Finanzas",
+    items: [
+      {
+        href: routes.finances,
+        label: "Finanzas",
+        icon: ClipboardList,
+        children: [
+          {
+            href: routes.finances,
+            label: "Todas",
+            icon: LayoutList,
+          },
+          {
+            href: routes.financeNetIncome,
+            label: "Utilidad neta",
+            icon: TrendingUp,
+          },
+          {
+            href: routes.financeComparison,
+            label: "Comparación",
+            icon: Scale,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Empleados",
+    items: [
+      {
+        href: routes.workers,
+        label: "Empleados",
+        icon: UserGroup,
       },
     ],
   },
@@ -41,7 +95,7 @@ export const navigationConfig: NavigationConfig = [
     label: "Sistema",
     items: [
       {
-        href: "/dashboard/configuracion",
+        href: routes.settings,
         label: "Configuración",
         icon: Settings,
       },
