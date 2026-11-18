@@ -3,6 +3,7 @@ import React, { ReactNode } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -15,6 +16,8 @@ interface Action {
   label: string;
   icon?: ReactNode;
   action: () => void;
+  /** Estilo del ítem; usa "destructive" para acciones que borran. */
+  variant?: "default" | "destructive";
 }
 
 interface Props {
@@ -22,7 +25,10 @@ interface Props {
   actions: Action[];
 }
 
-export default function TableMenu({ titleTableMenu = "Acciones", actions }: Props) {
+export default function TableMenu({
+  titleTableMenu = "Acciones",
+  actions,
+}: Props) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger
@@ -34,16 +40,23 @@ export default function TableMenu({ titleTableMenu = "Acciones", actions }: Prop
         )}
       />
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>{titleTableMenu}</DropdownMenuLabel>
+        <DropdownMenuGroup>
+          <DropdownMenuLabel>{titleTableMenu}</DropdownMenuLabel>
 
-        <DropdownMenuSeparator />
+          <DropdownMenuSeparator />
 
-        {actions.map((action, index) => (
-          <DropdownMenuItem className="flex gap-2" key={index} onClick={action.action}>
-            {action.icon && action.icon}
-            {action.label}
-          </DropdownMenuItem>
-        ))}
+          {actions.map((action, index) => (
+            <DropdownMenuItem
+              className="flex gap-2"
+              variant={action.variant}
+              key={index}
+              onClick={action.action}
+            >
+              {action.icon && action.icon}
+              {action.label}
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
   );
