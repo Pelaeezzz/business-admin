@@ -19,9 +19,4 @@ export const routes = {
   financeComparison: "/dashboard/finanzas/comparacion",
   workers: "/dashboard/trabajadores",
   settings: "/dashboard/configuracion",
-  users: {
-    list: "/dashboard/users",
-    new: "/dashboard/users/new",
-    edit: (id: string) => `/dashboard/users/${id}/edit`,
-  },
 } as const;
