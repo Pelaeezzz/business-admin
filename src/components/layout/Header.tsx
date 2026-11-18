@@ -6,6 +6,7 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import {
   DropdownMenu,
   DropdownMenuContent,
+  DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
@@ -33,7 +34,8 @@ export function Header() {
     .split("/")
     .filter(Boolean)
     .map((segment, index, arr) => ({
-      label: segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " "),
+      label:
+        segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, " "),
       href: "/" + arr.slice(0, index + 1).join("/"),
       isLast: index === arr.length - 1,
     }));
@@ -43,7 +45,10 @@ export function Header() {
       <div className="container flex h-16 items-center gap-4 px-4">
         <SidebarTrigger className="md:hidden" aria-label="Abrir menú" />
 
-        <nav className="hidden md:flex md:items-center md:gap-1" aria-label="Breadcrumb">
+        <nav
+          className="hidden md:flex md:items-center md:gap-1"
+          aria-label="Breadcrumb"
+        >
           <span className="text-sm font-medium text-foreground">Dashboard</span>
           {breadcrumbs.map((crumb) => (
             <span key={crumb.href} className="flex items-center gap-1 text-sm">
@@ -62,7 +67,9 @@ export function Header() {
                 />
               </svg>
               {crumb.isLast ? (
-                <span className="font-medium text-foreground">{crumb.label}</span>
+                <span className="font-medium text-foreground">
+                  {crumb.label}
+                </span>
               ) : (
                 <Link
                   href={crumb.href}
@@ -81,7 +88,9 @@ export function Header() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
+            onClick={() =>
+              setTheme(resolvedTheme === "dark" ? "light" : "dark")
+            }
             aria-label="Cambiar tema"
             title="Cambiar tema"
           >
@@ -93,28 +102,43 @@ export function Header() {
           <DropdownMenu>
             <DropdownMenuTrigger
               render={(props) => (
-                <Button {...props} variant="ghost" className="relative h-9 w-9 rounded-full">
+                <Button
+                  {...props}
+                  variant="ghost"
+                  className="relative h-9 w-9 rounded-full"
+                >
                   <Avatar className="h-9 w-9">
-                    <AvatarImage src={user.avatarUrl ?? undefined} alt={user.name} />
-                    <AvatarFallback className="text-sm font-medium">{user.initials}</AvatarFallback>
+                    <AvatarImage
+                      src={user.avatarUrl ?? undefined}
+                      alt={user.name}
+                    />
+                    <AvatarFallback className="text-sm font-medium">
+                      {user.initials}
+                    </AvatarFallback>
                   </Avatar>
                 </Button>
               )}
             />
             <DropdownMenuContent className="w-56" align="end">
-              <DropdownMenuLabel className="font-normal">
-                <div className="flex flex-col space-y-1">
-                  <p className="text-sm leading-none font-medium">{user.name}</p>
-                  <p className="text-xs leading-none text-muted-foreground">{user.email}</p>
-                </div>
-              </DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="text-destructive focus:text-destructive">
-                <button className="flex w-full items-center gap-2">
-                  <LogOut className="h-4 w-4" />
-                  Cerrar sesión
-                </button>
-              </DropdownMenuItem>
+              <DropdownMenuGroup>
+                <DropdownMenuLabel className="font-normal">
+                  <div className="flex flex-col space-y-1">
+                    <p className="text-sm leading-none font-medium">
+                      {user.name}
+                    </p>
+                    <p className="text-xs leading-none text-muted-foreground">
+                      {user.email}
+                    </p>
+                  </div>
+                </DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="text-destructive focus:text-destructive">
+                  <button className="flex w-full items-center gap-2">
+                    <LogOut className="h-4 w-4" />
+                    Cerrar sesión
+                  </button>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
