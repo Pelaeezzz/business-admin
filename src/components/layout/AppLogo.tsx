@@ -22,12 +22,12 @@ export function AppLogo() {
     <>
       <Image
         {...logo.light}
-        alt="Vista Dentro"
+        alt="Negocios"
         className="h-8 w-auto max-w-full object-contain dark:hidden"
       />
       <Image
         {...logo.dark}
-        alt="Vista Dentro"
+        alt="Negocios"
         className="hidden h-8 w-auto max-w-full object-contain dark:block"
       />
     </>
